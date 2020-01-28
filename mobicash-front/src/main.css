@@ -44,4 +44,12 @@
   text-decoration-color: grey-darker;
   -moz-text-decoration-color: grey-darker;
 }
+aside{
+  width: 10%;
+  float: left;
+  min-height: 600px;
+}
+header{
+  background-color: rgb(62, 68, 4)
+}
 @tailwind utilities;
