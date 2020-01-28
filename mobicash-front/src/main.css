@@ -1,0 +1,47 @@
+@tailwind base;
+
+@tailwind components;
+
+.input {
+   appearance: none;
+   display: block; 
+   background: bg-grey-lighter;
+   color: text-grey-darker;
+   border: border-grey-lighter rounded py-3 px-4 leading-tight;
+}
+
+.input:focus {
+  outline: none;
+  background: white;
+  border:grey;
+}
+
+.label {
+  display: block;
+  text-decoration: uppercase tracking-wide text-grey-darker text-xs font-bold mb-2;
+}
+
+.select {
+  appearance: none py-3 px-4 pr-8 block w-full bg-grey-lighter border border-grey-lighter text-grey-darker rounded leading-tight;
+   -webkit-appearance: none;
+}
+
+.select:focus {
+  outline: none;
+  background: white;
+  border:grey;
+}
+
+.link {
+  text-decoration: no-underline;
+}
+
+.link-grey {
+  text-anchor: grey-dark;
+}
+
+.link-grey:hover {
+  text-decoration-color: grey-darker;
+  -moz-text-decoration-color: grey-darker;
+}
+@tailwind utilities;
