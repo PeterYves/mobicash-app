@@ -13,8 +13,8 @@
         <input type="submit" class="btn btn-info btn-sm" name="search_button" value="Search">
       </form>&nbsp;
       <div>
-        <router-link to="/" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign in</router-link>
-        <router-link to="/signup" class="link-grey px-2 no-underline" v-if="!signedIn()">Sign Up</router-link>
+        <router-link to="/" class="btn-sm btn-success signinbtn" v-if="!signedIn()">Sign in</router-link>
+        <router-link to="/signup" class="btn-sm btn-light signupbtn" v-if="!signedIn()">Sign Up</router-link>
          <a href="#" @click.prevent="signOut" class="btn-sm btn-danger signout" v-if="signedIn()">Sign out</a>
       </div>
     </div>

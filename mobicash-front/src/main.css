@@ -87,4 +87,21 @@ strong b{
   opacity: 0.5;
   color:orange;
 }
+.signinbtn{
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  background-color: rgb(121, 151, 14);
+}
+.signupbtn{
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+  background-color: rgb(223, 169, 21);
+  color:white;
+}
 @tailwind utilities;

@@ -24,6 +24,11 @@
       </div>
       <input type="submit" value="Create Customer" class="btn-success btn-sm w-full py-4 text-white items-center justify-center" />
     </form><br>
+    <form class="w-full max-w-sm" method="GET" action="http://localhost:3000/api/v1/customerpdf">
+        <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
+           <input type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" name="print" value="Print pdf">
+        </div>
+      </form>
     <p class="font-bold text-center">All Customers</p>
     <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700" role="alert">
       <ul class="list-reset mt-4">

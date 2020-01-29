@@ -7,7 +7,6 @@ module Api
       # GET /customers
       def index
         @customers = Customer.all
-
         render json: @customers
       end
 
@@ -39,6 +38,11 @@ module Api
       # DELETE /customers/1
       def destroy
         @customer.destroy
+      end
+      def pdf
+        @customers = Customer.all
+        pdf = CustomerPdf.new(@customers)
+        send_data pdf.render, filename: "customers.pdf",type: "application/pdf",disposition: "inline"
       end
 
       private
