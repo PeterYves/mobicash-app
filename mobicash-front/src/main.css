@@ -48,8 +48,43 @@ aside{
   width: 10%;
   float: left;
   min-height: 600px;
+  background-color: black;
+  opacity: 0.6;
+  transition:0.8s;
+  -webkit-transition:0.8s;
+  -moz-transition:0.8s;
+  -ms-transition:0.8s;
+  -o-transition:0.8s;
 }
 header{
-  background-color: rgb(62, 68, 4)
+  background-color: rgb(62, 68, 4);
+  width: 100%;
+}
+.titles{
+  margin-left: 50px;
+  color: orange;
+}
+.titles b{
+  margin-right: 100px;
+}
+strong b{
+  margin-right: 100px
+}
+.signout{
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+.logo-text{
+  font-size: 30px;
+  color: rgb(170, 238, 173);
+  font-family: cursive;
+}
+.logo-text :hover{
+  text-decoration: none;
+  opacity: 0.5;
+  color:orange;
 }
 @tailwind utilities;

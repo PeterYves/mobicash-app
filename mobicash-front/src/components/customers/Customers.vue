@@ -1,46 +1,61 @@
 /* eslint-disable eol-last */
 <template>
-  <div class="max-w-md m-auto py-10">
+  <div class="m-auto py-10" style="width:60%">
     <div class="text-red" v-if="error">{{ error }}</div>
-    <h3 class="font-mono font-regular text-3xl mb-4">Add a new customer</h3>
-    <form action="" @submit.prevent="addCustomer">
-      <div class="mb-6">
-        <input class="input"
+    <h3 class="font-mono font-regular text-3xl mb-4 text-center">Add New Customer</h3>
+    <form action="" @submit.prevent="addCustomer" style="width:40%;margin:auto">
+      <div class="form-group mb-6">
+        <input class="input form-control"
           autofocus autocomplete="off"
-          placeholder="Type a customer name"
+          placeholder="Customer Name"
           v-model="name" id="name" />
       </div>
-      <input type="submit" value="Add Customer" class="font-sans font-bold px-4 rounded cursor-pointer no-underline bg-green hover:bg-green-dark block w-full py-4 text-white items-center justify-center" />
-    </form>
+      <div class="form-group mb-6">
+        <input class="input form-control"
+          autofocus autocomplete="off"
+          placeholder="Address"
+          v-model="address" id="address" />
+      </div>
+      <div class="form-group mb-6">
+        <input class="input form-control"
+          autofocus autocomplete="off"
+          placeholder="Phone Number"
+          v-model="phone" id="phone" />
+      </div>
+      <input type="submit" value="Create Customer" class="btn-success btn-sm w-full py-4 text-white items-center justify-center" />
+    </form><br>
+    <p class="font-bold text-center">All Customers</p>
+    <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700" role="alert">
+      <ul class="list-reset mt-4">
+        <p class="titles"><b>Customer Names</b> <b>Address</b><b>Phone Number</b></p>
+        <li class="py-4" v-for="customer in customers" :key="customer.id" :customer="customer">
 
-    <hr class="border border-grey-light my-6" />
+          <div class="flex items-center justify-between flex-wrap">
+            <p class="block flex-1 font-mono font-semibold flex items-center ">
+              <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
+              <strong><b>{{ customer.name }}</b> <b>{{ customer.address }}</b> <b>{{ customer.phone }}</b></strong>
+            </p>
 
-    <ul class="list-reset mt-4">
-      <li class="py-4" v-for="customer in customers" :key="customer.id" :customer="customer">
+            <button class="btn btn-info btn-sm"
+            @click.prevent="editCustomer(customer)">Edit</button> &nbsp;&nbsp;
 
-        <div class="flex items-center justify-between flex-wrap">
-          <p class="block flex-1 font-mono font-semibold flex items-center ">
-            <svg class="fill-current text-indigo w-6 h-6 mr-2" viewBox="0 0 20 20" width="20" height="20"><title>music customer</title><path d="M15.75 8l-3.74-3.75a3.99 3.99 0 0 1 6.82-3.08A4 4 0 0 1 15.75 8zm-13.9 7.3l9.2-9.19 2.83 2.83-9.2 9.2-2.82-2.84zm-1.4 2.83l2.11-2.12 1.42 1.42-2.12 2.12-1.42-1.42zM10 15l2-2v7h-2v-5z"></path></svg>
-            {{ customer.name }}
-          </p>
+            <button class="btn btn-danger btn-sm"
+          @click.prevent="removeCustomer(customer)">Delete</button>
+          </div>
 
-          <button class="bg-tranparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 mr-2 rounded"
-          @click.prevent="editCustomer(customer)">Edit</button>
-
-          <button class="bg-transprent text-sm hover:bg-red text-red hover:text-white no-underline font-bold py-2 px-4 rounded border border-red"
-         @click.prevent="removeCustomer(customer)">Delete</button>
-        </div>
-
-        <div v-if="customer == editedCustomer">
-          <form action="" @submit.prevent="updateCustomer(customer)">
-            <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
-              <input class="input" v-model="customer.name" />
-              <input type="submit" value="Update" class=" my-2 bg-transparent text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
-            </div>
-          </form>
-        </div>
-      </li>
-    </ul>
+          <div v-if="customer == editedCustomer" style="width:30%">
+            <form action="" @submit.prevent="updateCustomer(customer)">
+              <div class="mb-6 p-4 bg-white rounded border border-grey-light mt-4">
+                <input class="input form-control" v-model="customer.name" /><br>
+                <input class="input form-control" v-model="customer.address" /><br>
+                <input class="input form-control" v-model="customer.phone" /><br>
+                <input type="submit" value="Update" class="btn-info text-sm hover:bg-blue hover:text-white text-blue border border-blue no-underline font-bold py-2 px-4 rounded cursor-pointer">
+              </div>
+            </form>
+          </div>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
@@ -69,11 +84,13 @@ export default {
       this.error = (error.response && error.response.data && error.response.data.error) || text
     },
     addCustomer () {
-      this.$http.secured.post('/api/v1/customers/', { name: this.name })
+      this.$http.secured.post('/api/v1/customers/', { name: this.name, address: this.address, phone: this.phone })
 
         .then(response => {
           this.customers.push(response.data)
-          this.newCustomer = ''
+          this.name = ''
+          this.address = ''
+          this.phone = ''
         })
         .catch(error => this.setError(error, 'Cannot create customer'))
     },
