@@ -17,7 +17,7 @@ module Api
 
       # POST /customers
       def create
-        @customer = Customer.new(customer_params)
+        @customer = current_user.customers.build(customer_params)
 
         if @customer.save
           render json: @customer, status: :created

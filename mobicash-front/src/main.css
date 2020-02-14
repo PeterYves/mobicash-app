@@ -16,11 +16,6 @@
   border:grey;
 }
 
-.label {
-  display: block;
-  text-decoration: uppercase tracking-wide text-grey-darker text-xs font-bold mb-2;
-}
-
 .select {
   appearance: none py-3 px-4 pr-8 block w-full bg-grey-lighter border border-grey-lighter text-grey-darker rounded leading-tight;
    -webkit-appearance: none;
@@ -38,26 +33,32 @@
 
 .link-grey {
   text-anchor: grey-dark;
+  color: #fda085;
 }
 
 .link-grey:hover {
-  text-decoration-color: grey-darker;
-  -moz-text-decoration-color: grey-darker;
+  text-decoration: none;
+  color:  #fda085;
+}
+.link-grey b{
+  color: orange;
 }
 aside{
   width: 10%;
   float: left;
   min-height: 600px;
-  background-color: black;
+  background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898; 
+ background-blend-mode: multiply,multiply;
   opacity: 0.6;
   transition:0.8s;
   -webkit-transition:0.8s;
   -moz-transition:0.8s;
   -ms-transition:0.8s;
   -o-transition:0.8s;
+  border-right: 3px solid #f6d365;
 }
 header{
-  background-color: rgb(62, 68, 4);
+  background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%);
   width: 100%;
 }
 .titles{
@@ -71,37 +72,59 @@ strong b{
   margin-right: 100px
 }
 .signout{
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  color: red;
 }
 .logo-text{
   font-size: 30px;
-  color: rgb(170, 238, 173);
-  font-family: cursive;
+  color: rgb(248, 172, 8);
+  font-family: Verdana;
+  padding-left: 5px;
+  padding-right: 5px;
+  font-weight: bolder;
 }
-.logo-text :hover{
+.logo-text b{
+  color: rgb(156, 153, 151);
+  border-top: 3px dotted rgb(248, 172, 8);
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  -ms-border-radius: 100%;
+  -o-border-radius: 100%;
+}
+.logo-text:hover{
   text-decoration: none;
   opacity: 0.5;
   color:orange;
 }
 .signinbtn{
-  border-radius: 100%;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
-  background-color: rgb(121, 151, 14);
+  background-color:#f88b6d;
 }
 .signupbtn{
-  border-radius: 100%;
-  -webkit-border-radius: 100%;
-  -moz-border-radius: 100%;
-  -ms-border-radius: 100%;
-  -o-border-radius: 100%;
-  background-color: rgb(223, 169, 21);
+  background-color: #f88b6d;
   color:white;
+}
+.signinbtn:hover,.signupbtn:hover{
+  text-decoration: none;
+  background-color: #f88b6d;
+  opacity: 0.4;
+  padding: 10px;
+}
+.signout:hover{
+  text-decoration: none;
+}
+.search{
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border: 1px solid #f6d365;
+  background-color: transparent;
+  color: aliceblue
+}
+.newcustomer{
+  stroke: aqua;
+  box-shadow: black;
+  border: 1px solid black;
 }
 @tailwind utilities;

@@ -2,7 +2,9 @@
 <template>
   <div class="m-auto py-10" style="width:60%">
     <div class="text-red" v-if="error">{{ error }}</div>
-    <h3 class="font-mono font-regular text-3xl mb-4 text-center">Add New Customer</h3>
+    <div class="card">
+    <div class="card-body">
+    <h3 class="card-title font-mono font-regular text-3xl mb-4 text-center">Add New Customer</h3>
     <form action="" @submit.prevent="addCustomer" style="width:40%;margin:auto">
       <div class="form-group mb-6">
         <input class="input form-control"
@@ -22,8 +24,9 @@
           placeholder="Phone Number"
           v-model="phone" id="phone" />
       </div>
-      <input type="submit" value="Create Customer" class="btn-success btn-sm w-full py-4 text-white items-center justify-center" />
+      <input type="submit" value="Create Customer" class="btn btn-lg" style="background: #fda085 100%;color:#f6d365" />
     </form><br>
+    </div></div>
     <form class="w-full max-w-sm" method="GET" action="http://localhost:3000/api/v1/customerpdf">
         <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
            <input type="submit"  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" name="print" value="Print pdf">
@@ -34,19 +37,18 @@
       <ul class="list-reset mt-4">
         <p class="titles"><b>Customer Names</b> <b>Address</b><b>Phone Number</b></p>
         <li class="py-4" v-for="customer in customers" :key="customer.id" :customer="customer">
+    <table class="table-auto">
+    <tr>
+      <td class="border px-4 py-2">{{ customer.name }}</td>
+      <td class="border px-4 py-2">{{ customer.address }}</td>
+      <td class="border px-4 py-2">{{ customer.phone }}</td>
+      <td><button class="btn btn-outline-info btn-sm"
+          @click.prevent="editCustomer(customer)">Edit</button>
 
-          <div class="flex items-center justify-between flex-wrap">
-            <p class="block flex-1 font-mono font-semibold flex items-center ">
-              <svg class="fill-current h-6 w-6 text-teal-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M2.93 17.07A10 10 0 1 1 17.07 2.93 10 10 0 0 1 2.93 17.07zm12.73-1.41A8 8 0 1 0 4.34 4.34a8 8 0 0 0 11.32 11.32zM9 11V9h2v6H9v-4zm0-6h2v2H9V5z"/></svg>
-              <strong><b>{{ customer.name }}</b> <b>{{ customer.address }}</b> <b>{{ customer.phone }}</b></strong>
-            </p>
-
-            <button class="btn btn-info btn-sm"
-            @click.prevent="editCustomer(customer)">Edit</button> &nbsp;&nbsp;
-
-            <button class="btn btn-danger btn-sm"
-          @click.prevent="removeCustomer(customer)">Delete</button>
-          </div>
+          <button class="btn btn-outline-danger btn-sm"
+         @click.prevent="removeCustomer(customer)">Delete</button></td>
+    </tr>
+    </table>
 
           <div v-if="customer == editedCustomer" style="width:30%">
             <form action="" @submit.prevent="updateCustomer(customer)">
